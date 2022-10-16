@@ -1,11 +1,11 @@
-import { describe, test, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { pluralize } from '../src/index.js'
 
 describe('pluralize', () => {
   const options = {
     one: 'задание',
     two: 'задания',
-    few: 'заданий',
+    few: 'заданий'
   }
   const decl = pluralize({ ...options, prefix: true })
 
