@@ -17,15 +17,13 @@ export function hexToRgb(hex: string): Rgb | null {
 
 export function rgbToHex(color: Rgb): string {
   return `#${Object.values(color)
-    .map((v) => padNum(v))
+    .map((v) => {
+      const hex = Math.abs(v).toString(16)
+      return hex.length > 2 ? '00' : hex.length === 1 ? `0${hex}` : hex
+    })
     .join('')}`.toUpperCase()
 }
 
 export function isHexColor(hex: string): RegExpExecArray | null {
   return /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-}
-
-function padNum(color: number): string {
-  const hex = Math.abs(color).toString(16)
-  return hex.length > 2 ? '00' : hex.length === 1 ? `0${hex}` : hex
 }
