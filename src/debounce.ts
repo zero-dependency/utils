@@ -9,6 +9,6 @@ export function debounce<T extends (...args: any[]) => void>(
       clearTimeout(timeoutId)
     }
 
-    timeoutId = setTimeout(() => fn(args), ms)
+    timeoutId = setTimeout(() => fn(...args), ms)
   }
 }
