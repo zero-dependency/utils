@@ -1,7 +1,7 @@
 export { pluralize } from './pluralize.js'
 export { wait } from './wait.js'
 export { hexToRgb, rgbToHex, isHexColor } from './colors.js'
-export { pad } from './pad.js'
+export { zeroPad } from './zero-pad.js'
 export { throttle } from './throttle.js'
 export { debounce } from './debounce.js'
 export { entries, omit, pick } from './object.js'
