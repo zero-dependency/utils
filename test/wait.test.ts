@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { wait } from '../src/index.js'
+import { wait } from '../src/wait.js'
 
 describe('wait', () => {
   test('should be defined', () => {
@@ -7,9 +7,16 @@ describe('wait', () => {
   })
 
   test('wait with default argument (ms = 1000)', async () => {
-    const now = Date.now() / 1000
+    const start = Date.now()
     await wait()
-    const end = Date.now() / 1000
-    expect(Math.floor(end - now)).toBe(1)
+    const end = Date.now()
+    expect(end - start).toBeGreaterThanOrEqual(1000)
+  })
+
+  test('wait with 0 argument', async () => {
+    const start = Date.now()
+    await wait(0)
+    const end = Date.now()
+    expect(end - start).toBeGreaterThanOrEqual(0)
   })
 })

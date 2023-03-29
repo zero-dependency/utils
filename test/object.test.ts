@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, test } from 'vitest'
-import { entries, omit, pick } from '../src/index.js'
+import { entries, omit, pick } from '../src/object.js'
 
 describe('object', () => {
   test('should be defined', () => {

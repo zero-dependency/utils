@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { zeroPad } from '../src/index.js'
+import { zeroPad } from '../src/zero-pad.js'
 
 describe('zeroPad', () => {
   test('should be defined', () => {
