@@ -1,4 +1,4 @@
-interface PluralizeOptions {
+export interface PluralizeOptions {
   one: string
   two: string
   few: string

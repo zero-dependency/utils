@@ -1,11 +1,11 @@
 type Values<T> = T[keyof T]
-type Entries<T> = [keyof T, Values<T>][]
+export type Entries<T> = [keyof T, Values<T>][]
 
 export function entries<T extends object>(obj: T): Entries<T> {
   return Object.entries(obj) as Entries<T>
 }
 
-type Plain<T> = T extends (...a: any[]) => any
+export type Plain<T> = T extends (...a: any[]) => any
   ? T
   : T extends new (...a: any[]) => any
   ? T
