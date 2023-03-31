@@ -19,3 +19,60 @@ pnpm add @zero-dependency/utils
 ```
 
 ## Usage
+
+```ts
+import {
+  hexToRgb,
+  rgbToHex,
+  isHexColor,
+  debounce,
+  throttle,
+  toNumber,
+  addZero,
+  entries,
+  pick,
+  omit,
+  pluralize,
+  random,
+  wait
+} from '@zero-dependency/utils'
+
+// hex
+console.log(hexToRgb('#000000')) // { r: 0, g: 0, b: 0 }
+console.log(rgbToHex(0, 0, 0)) // #000000
+console.log(isHexColor('#000000')) // true
+
+// debounce
+const debounced = debounce((msg) => console.log(msg), 1000)
+
+// throttle
+const throttled = throttle((msg) => console.log(msg), 1000)
+
+// number
+console.log(toNumber('1')) // 1
+console.log(addZero(1)) // '01'
+
+// object
+console.log(entries({ a: 1, b: 2 })) // [['a', 1], ['b', 2]]
+console.log(pick({ a: 1, b: 2 }, ['a'])) // { a: 1 }
+console.log(omit({ a: 1, b: 2 }, ['a'])) // { b: 2 }
+
+// pluralize
+const tasksPluralize = pluralize({
+  one: 'задание',
+  two: 'задания',
+  few: 'заданий'
+  prefix: true
+})
+
+console.log(tasksPluralize(1)) // '1 задание'
+console.log(tasksPluralize(3)) // '3 задания'
+console.log(tasksPluralize(5)) // '5 заданий'
+console.log(tasksPluralize(999)) // '999 заданий'
+
+// random
+console.log(random(1, 10))
+
+// wait
+wait(1000).then(() => console.log('done')) // resolve after 1s
+```
