@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { toNumber, addZero } from '../src/number.js'
+import { addZero, toNumber } from '../src/number.js'
 
 describe('toNumber', () => {
   test('should be defined', () => {
