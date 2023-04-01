@@ -5,6 +5,14 @@ export interface PluralizeOptions {
   prefix?: boolean
 }
 
+/**
+ * Pluralize words
+ * @param one word for 1
+ * @param two word for 2
+ * @param few word for 5
+ * @param prefix add count to the beginning of the word
+ * @returns function that accepts count and returns pluralized word
+ */
 export function pluralize({
   one,
   two,

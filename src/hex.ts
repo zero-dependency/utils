@@ -4,6 +4,11 @@ export interface Rgb {
   b: number
 }
 
+/**
+ * Convert hex color string to rgb color object
+ * @param hex hex color string
+ * @returns rgb color object
+ */
 export function hexToRgb(hex: string): Rgb | null {
   const result = isHexColor(hex)
 
@@ -15,6 +20,11 @@ export function hexToRgb(hex: string): Rgb | null {
   } : null
 }
 
+/**
+ * Convert rgb color object to hex color string
+ * @param color rgb color object
+ * @returns hex color string
+ */
 export function rgbToHex(color: Rgb): string {
   return `#${Object.values(color)
     .map((v) => {
@@ -24,6 +34,11 @@ export function rgbToHex(color: Rgb): string {
     .join('')}`.toUpperCase()
 }
 
+/**
+ * Check if hex color string is valid
+ * @param hex hex color string
+ * @returns `RegExpExecArray` if hex is valid, `null` otherwise
+ */
 export function isHexColor(hex: string): RegExpExecArray | null {
   return /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
 }

@@ -1,4 +1,4 @@
-export function toNumber(value: any): number {
+export function ToNumber(value: any): number {
   const num = parseFloat(value)
   return isNaN(num) ? 0 : num
 }
