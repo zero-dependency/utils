@@ -38,9 +38,9 @@ import {
 } from '@zero-dependency/utils'
 
 // hex
-console.log(hexToRgb('#000000')) // { r: 0, g: 0, b: 0 }
+console.log(hexToRgb('#000')) // { r: 0, g: 0, b: 0 }
 console.log(rgbToHex(0, 0, 0)) // #000000
-console.log(isHexColor('#000000')) // true
+console.log(isHexColor('#000')) // true
 
 // debounce
 const debounced = debounce((msg) => console.log(msg), 1000)
