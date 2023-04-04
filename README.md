@@ -39,8 +39,9 @@ import {
 
 // hex
 console.log(hexToRgb('#000')) // { r: 0, g: 0, b: 0 }
-console.log(rgbToHex(0, 0, 0)) // #000000
-console.log(isHexColor('#000')) // true
+console.log(rgbToHex({ r: 0, g: 0, b: 0 })) // #000000
+console.log(isHexColor('#000')) // RegExpExecArray
+console.log(isHexColor('wrong')) // null
 
 // debounce
 const debounced = debounce((msg) => console.log(msg), 1000)
@@ -61,7 +62,7 @@ console.log(omit({ a: 1, b: 2 }, ['a'])) // { b: 2 }
 const tasksPluralize = pluralize({
   one: 'задание',
   two: 'задания',
-  few: 'заданий'
+  few: 'заданий',
   prefix: true
 })
 
@@ -74,5 +75,6 @@ console.log(tasksPluralize(999)) // '999 заданий'
 console.log(random(1, 10))
 
 // wait
-wait(1000).then(() => console.log('done')) // resolve after 1s
+await wait(1000)
+console.log('resolve after 1s')
 ```
