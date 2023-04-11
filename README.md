@@ -38,6 +38,7 @@ import {
   generateChars,
   capitalize
   wait,
+  match
 } from '@zero-dependency/utils'
 
 // hex
@@ -83,4 +84,14 @@ console.log(capitalize('hello')) // 'Hello'
 // wait
 await wait(1000)
 console.log('resolve after 1s')
+
+// pattern matching
+const matcher = match<[string, string], string>((test) => ({
+  [test((firstName) => !firstName)]: 'User not found',
+  [test((firstName) => firstName.length < 8)]: (firstName, lastName) => `${firstName} ${lastName}`,
+  [test((firstName) => firstName.length >= 8)]: (firstName) => firstName
+}))
+
+matcher('', 'Doe') // 'User not found'
+matcher('John', 'Doe') // 'John Doe'
 ```
