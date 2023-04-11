@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect } from 'vitest'
 import { hexToRgb, isHexColor, rgbToHex } from '../src/hex.js'
 
-describe('hex', () => {
+describe('hex', (test) => {
   test('should be defined', () => {
     expect(hexToRgb).toBeDefined()
     expect(rgbToHex).toBeDefined()
