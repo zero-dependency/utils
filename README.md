@@ -33,8 +33,11 @@ import {
   pick,
   omit,
   pluralize,
-  random,
-  wait
+  randomNum,
+  randomToken,
+  generateChars,
+  capitalize
+  wait,
 } from '@zero-dependency/utils'
 
 // hex
@@ -52,6 +55,7 @@ const throttled = throttle((msg) => console.log(msg), 1000)
 // number
 console.log(toNumber('1')) // 1
 console.log(addZero(1)) // '01'
+console.log(randomNum(1, 10))
 
 // object
 console.log(entries({ a: 1, b: 2 })) // [['a', 1], ['b', 2]]
@@ -71,8 +75,10 @@ console.log(tasksPluralize(3)) // '3 задания'
 console.log(tasksPluralize(5)) // '5 заданий'
 console.log(tasksPluralize(999)) // '999 заданий'
 
-// random
-console.log(random(1, 10))
+// string
+console.log(randomToken()) // 'vpxi4hpzmy'
+console.log(generateChars('a', 'd')) // ['a', 'b', 'c', 'd']
+console.log(capitalize('hello')) // 'Hello'
 
 // wait
 await wait(1000)
