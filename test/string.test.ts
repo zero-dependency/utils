@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { generateChars, capitalize } from '../src/string.js'
+import { capitalize, generateChars, randomToken } from '../src/string.js'
 
 describe('generateChars', () => {
   test('should be defined', () => {
@@ -46,5 +46,17 @@ describe('capitalize', () => {
 
   test('should return an empty string if `str` is empty', () => {
     expect(capitalize('')).toBe('')
+  })
+})
+
+describe('randomToken', () => {
+  test('should be defined', () => {
+    expect(randomToken).toBeDefined()
+  })
+
+  test('should return a random string', () => {
+    for (let i = 0; i < 1000; i++) {
+      expect(randomToken()).toMatch(/^[a-z0-9]{8,13}$/)
+    }
   })
 })

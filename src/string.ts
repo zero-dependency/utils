@@ -10,3 +10,7 @@ export function generateChars(startChar: string, endChar: string): string[] {
 export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+export function randomToken(): string {
+  return Math.random().toString(36).slice(2)
+}
