@@ -1,5 +1,6 @@
-type Values<T> = T[keyof T]
-export type Entries<T> = [keyof T, Values<T>][]
+export type Keys<T> = Extract<keyof T, string>
+export type Values<T> = T[keyof T]
+export type Entries<T> = [Keys<T>, Values<T>][]
 
 /**
  * Get entries of an object
