@@ -1,23 +1,24 @@
 import { randomToken } from './string.js'
 
-type Predicate<I extends [any] | [any, any], O> = (...args: I) => O
+type Input = [any] | [any, any]
 type Out<T> = T | null | undefined
+type Predicate<I extends Input, Out> = (...args: I) => Out
 
-export function match<I extends [any] | [any, any], O>(
+export function match<InputValue extends Input, OutValue>(
   callback: (
-    test: (predicate?: Predicate<I, boolean>) => string
-  ) => Record<string, Predicate<I, O> | O>
-): Predicate<I, Out<O>> {
-  const predicates: Record<string, Predicate<I, O>> = {}
+    test: (predicate?: Predicate<InputValue, boolean>) => string
+  ) => Record<string, Predicate<InputValue, OutValue> | OutValue>
+): Predicate<InputValue, Out<OutValue>> {
+  const predicates: Record<string, Predicate<InputValue, OutValue>> = {}
 
-  function test(predicate: Predicate<I, any> = () => true): string {
+  function test(predicate: Predicate<InputValue, any> = () => true): string {
     const predicateName = randomToken()
     predicates[predicateName] = predicate
     return predicateName
   }
 
   const tests = callback(test)
-  return function (...args): Out<O> {
+  return function (...args): Out<OutValue> {
     if (Object.keys(predicates).length === 0) {
       throw new Error('No predicates were defined')
     }
