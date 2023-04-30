@@ -28,12 +28,16 @@ export function hexToRgb(hex: string): Rgb | null {
  * @returns hex color string
  */
 export function rgbToHex(color: Rgb): string {
-  return `#${entries(color)
-    .map(([_, value]) => {
-      const hex = Math.abs(value).toString(16)
-      return hex.length > 2 ? '00' : hex.length === 1 ? `0${hex}` : hex
-    })
-    .join('')}`
+  const hex = entries(color).map(([_, value]) => {
+    const parsedValue = Math.abs(value).toString(16)
+    return parsedValue.length > 2
+      ? '00'
+      : parsedValue.length === 1
+      ? `0${parsedValue}`
+      : parsedValue
+  })
+
+  return `#${hex.join('')}`
 }
 
 /**
