@@ -1,48 +1,32 @@
-export interface PluralizeOptions {
-  one: string
-  two: string
-  few: string
-  prefix?: boolean
+/**
+ * Returns a function that takes a `TemplateStringsArray` and an array of tokens and
+ * returns a string by concatenating the interpolated values of the strings and tokens.
+ *
+ * @param {number} total - The total number of items.
+ * @returns {(strings: TemplateStringsArray, ...tokens: string[][]) => string} The function that takes a `TemplateStringsArray` and an array of tokens and returns the final string.
+ * @example pluralize(2)`packag${['e', 'es']} agenc${['y', 'ies']}` // packages agencies
+ */
+export function pluralize(
+  total: number
+): (strings: TemplateStringsArray, ...tokens: string[][]) => string {
+  return (strings, ...tokens) => {
+    return strings.reduce((acc, item, index) => {
+      const token = getToken(total, tokens[index - 1]!)
+      return acc + token + item
+    })
+  }
 }
 
-/**
- * Pluralize words
- * @param one word for 1
- * @param two word for 2
- * @param few word for 5
- * @param prefix add count to the beginning of the word
- * @returns function that accepts count and returns pluralized word
- */
-export function pluralize({
-  one,
-  two,
-  few,
-  prefix = false
-}: PluralizeOptions): (count: number) => void {
-  const words = [
-    one,
-    two,
-    few
-  ]
+// prettier-ignore
+const cases = [2, 0, 1, 1, 1, 2]
 
-  const cases = [
-    2,
-    0,
-    1,
-    1,
-    1,
-    2
-  ]
+function getToken(total: number, tokens: string[]): string {
+  total = Math.abs(total)
 
-  return (count: number) => {
-    count = Math.abs(count)
-    const decl =
-      words[
-        count % 100 > 4 && count % 100 < 20
-          ? 2
-          : cases[count % 10 < 5 ? count % 10 : 5]!
-      ]
+  const index =
+    total % 100 > 4 && total % 100 < 20
+      ? 2
+      : cases[total % 10 < 5 ? total % 10 : 5]!
 
-    return (prefix ? `${count} ` : '') + decl
-  }
+  return tokens[index]!
 }
