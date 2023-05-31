@@ -1,6 +1,8 @@
 /**
- * Return a number
- * @param value value to convert to number
+ * Converts the given value to a number. If the value cannot be converted, 0 is returned.
+ *
+ * @param {any} value - The value to convert.
+ * @return {number} - The converted number or 0 if conversion fails.
  */
 export function toNumber(value: any): number {
   const num = parseFloat(value)
@@ -8,9 +10,10 @@ export function toNumber(value: any): number {
 }
 
 /**
- * Returns a number with a leading zero if it is less than 10
- * @param num number to add zero to
- * @returns number with leading zero
+ * Returns a string representation of the given number with a leading zero if the number is less than 10.
+ *
+ * @param {number} num - The number to add a leading zero to.
+ * @return {string} A string representation of the given number with a leading zero if the number is less than 10.
  */
 export function addZero(num: number): string {
   num = Math.abs(num)
@@ -18,12 +21,16 @@ export function addZero(num: number): string {
 }
 
 /**
- * Returns a random number between min (inclusive) and max (inclusive)
- * @param min min value
- * @param max max value
- * @returns random number between min and max
+ * Generates a random number within a specified range.
+ *
+ * @param {number} [min = 0] - The lower bound of the range (default: 0).
+ * @param {number} [max = Number.MAX_SAFE_INTEGER - 1] - The upper bound of the range (default: Number.MAX_SAFE_INTEGER - 1).
+ * @returns {number} A random number within the specified range.
  */
-export function randomNum(min = 0, max = Number.MAX_SAFE_INTEGER - 1): number {
+export function randomNum(
+  min: number = 0,
+  max: number = Number.MAX_SAFE_INTEGER - 1
+): number {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 

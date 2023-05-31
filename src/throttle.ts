@@ -1,8 +1,9 @@
 /**
- * Throttle function execution by a given time in milliseconds (only the first call is executed)
- * @param fn function to be throttled
- * @param ms throttle time in milliseconds
- * @returns throttled function
+ * Returns a new function that, when invoked repeatedly, invokes fn at most once per every ms milliseconds.
+ *
+ * @param {Function} fn - The function to be throttled.
+ * @param {number} ms - The number of milliseconds to throttle invocations to.
+ * @return {Function} - A new function that wraps fn with throttling behavior.
  */
 export function throttle<T extends (...args: any[]) => ReturnType<T>>(
   fn: T,

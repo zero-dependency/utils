@@ -1,4 +1,5 @@
 import { entries } from './object.js'
+import { repeatEveryChars } from './string.js'
 
 export interface Rgb {
   r: number
@@ -7,9 +8,12 @@ export interface Rgb {
 }
 
 /**
- * Convert hex color string to rgb color object
- * @param hex hex color string
- * @returns rgb color object
+ * Converts a hexadecimal color code to its RGB equivalent.
+ *
+ * @param {string} hex - The hexadecimal color code to convert.
+ * @return {Rgb | null} An object containing the red, green, and blue values of
+ * the color, or null if the input is not a valid hexadecimal color code.
+ * @example hexToRgb('#fff') // { r: 255, g: 255, b: 255 }
  */
 export function hexToRgb(hex: string): Rgb | null {
   const result = isHexColor(hex)
@@ -23,9 +27,11 @@ export function hexToRgb(hex: string): Rgb | null {
 }
 
 /**
- * Convert rgb color object to hex color string
- * @param color rgb color object
- * @returns hex color string
+ * Converts an RGB color object to a hexadecimal color string.
+ *
+ * @param {Rgb} color - An object that represents an RGB color.
+ * @return {string} A string that represents a hexadecimal color code.
+ * @example rgbToHex({ r: 255, g: 255, b: 255 }) // '#ffffff'
  */
 export function rgbToHex(color: Rgb): string {
   const hex = entries(color).map(([_, value]) => {
@@ -41,13 +47,13 @@ export function rgbToHex(color: Rgb): string {
 }
 
 /**
- * Check if hex color string is valid
- * @param hex hex color string
- * @returns `RegExpExecArray` if hex is valid, `null` otherwise
+ * Checks if the given string represents a valid hexadecimal color code.
+ *
+ * @param {string} hex - The hexadecimal color code to be validated.
+ * @returns {RegExpExecArray | null} - An array of matched values if the input is a valid
+ * hexadecimal color code, or null otherwise.
  */
 export function isHexColor(hex: string): RegExpExecArray | null {
-  if (hex.length === 4) {
-    hex = `${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`
-  }
+  if (hex.length === 4) hex = repeatEveryChars(hex.slice(1), 2)
   return /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
 }
