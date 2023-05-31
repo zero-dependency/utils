@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { addZero, randomNum, toNumber } from '../src/number.js'
+import { addZero, clamp, randomNum, toNumber } from '../src/number.js'
 
 describe('toNumber', () => {
   test('should be defined', () => {
@@ -51,5 +51,17 @@ describe('randomNum', () => {
   test('should return a random number between 0 and `MAX_SAFE_INTEGER`', () => {
     expect(randomNum()).toBeGreaterThanOrEqual(0)
     expect(randomNum()).toBeLessThanOrEqual(Number.MAX_SAFE_INTEGER - 1)
+  })
+})
+
+describe('clamp', () => {
+  test('should be defined', () => {
+    expect(clamp).toBeDefined()
+  })
+
+  test('should return the number when value is a number', () => {
+    expect(clamp(1, 0, 10)).toBe(1)
+    expect(clamp(10, 0, 10)).toBe(10)
+    expect(clamp(-1, 0, 10)).toBe(0)
   })
 })

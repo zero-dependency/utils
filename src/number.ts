@@ -26,3 +26,15 @@ export function addZero(num: number): string {
 export function randomNum(min = 0, max = Number.MAX_SAFE_INTEGER - 1): number {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+/**
+ * Returns a value that is clamped between a minimum and a maximum value.
+ *
+ * @param {number} value The value to clamp.
+ * @param {number} min The minimum value.
+ * @param {number} max The maximum value.
+ * @return {number} The clamped value.
+ */
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max)
+}
