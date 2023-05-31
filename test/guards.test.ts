@@ -107,6 +107,7 @@ describe('isObjectEmpty', (test) => {
   })
 
   test('should return false if the value is not an empty object', () => {
+    expect(isObjectEmpty([])).toBe(false)
     expect(isObjectEmpty({ a: 1 })).toBe(false)
   })
 })
