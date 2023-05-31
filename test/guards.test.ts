@@ -11,7 +11,7 @@ import {
   notNull,
   notNullish,
   notUndefined
-} from '../src/is.js'
+} from '../src/guards.js'
 
 describe('is', (test) => {
   test('should be defined', () => {
