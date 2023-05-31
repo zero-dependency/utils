@@ -25,3 +25,21 @@ export function isFunction(obj: unknown): obj is Function {
 export function isObjectEmpty(obj: object) {
   return obj && isObject(obj) && Object.keys(obj).length === 0
 }
+
+export function notNullish<T>(
+  value: T | null | undefined
+): value is NonNullable<T> {
+  return value != null
+}
+
+export function notNull<T>(value: T | null): value is Exclude<T, null> {
+  return value !== null
+}
+
+export function notUndefined<T>(value: T): value is Exclude<T, undefined> {
+  return value !== undefined
+}
+
+export function isTruthy<T>(value: T): value is NonNullable<T> {
+  return Boolean(value)
+}

@@ -6,7 +6,11 @@ import {
   isNumber,
   isObject,
   isObjectEmpty,
-  isString
+  isString,
+  isTruthy,
+  notNull,
+  notNullish,
+  notUndefined
 } from '../src/is.js'
 
 describe('is', (test) => {
@@ -18,6 +22,10 @@ describe('is', (test) => {
     expect(isObject).toBeDefined()
     expect(isObjectEmpty).toBeDefined()
     expect(isString).toBeDefined()
+    expect(notNull).toBeDefined()
+    expect(notNullish).toBeDefined()
+    expect(notUndefined).toBeDefined()
+    expect(isTruthy).toBeDefined()
   })
 })
 
@@ -114,5 +122,36 @@ describe('isString', (test) => {
     expect(isString(1)).toBe(false)
     expect(isString(true)).toBe(false)
     expect(isString(() => {})).toBe(false)
+  })
+})
+
+describe('noNull', (test) => {
+  test('should return true if the value is not nullish', () => {
+    expect(notNull(null)).toBe(false)
+    expect(notNull(undefined)).toBe(true)
+  })
+})
+
+describe('notNullish', (test) => {
+  test('should return true if the value is nullish', () => {
+    expect(notNullish(null)).toBe(false)
+    expect(notNullish(undefined)).toBe(false)
+  })
+})
+
+describe('notUndefined', (test) => {
+  test('should return true if the value is not undefined', () => {
+    expect(notUndefined(null)).toBe(true)
+    expect(notUndefined(undefined)).toBe(false)
+  })
+})
+
+describe('isTruthy', (test) => {
+  test('should return true if the value is truthy', () => {
+    expect(isTruthy(true)).toBe(true)
+    expect(isTruthy('a')).toBe(true)
+    expect(isTruthy(1)).toBe(true)
+    expect(isTruthy({})).toBe(true)
+    expect(isTruthy([])).toBe(true)
   })
 })
