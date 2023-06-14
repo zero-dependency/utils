@@ -1,5 +1,5 @@
 export * from './pluralize.js'
-export * from './wait.js'
+export * from './sleep.js'
 export * from './hex.js'
 export * from './throttle.js'
 export * from './debounce.js'

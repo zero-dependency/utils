@@ -2,9 +2,14 @@
  * Returns a function that takes a `TemplateStringsArray` and an array of tokens and
  * returns a string by concatenating the interpolated values of the strings and tokens.
  *
- * @param {number} total - The total number of items.
- * @returns {(strings: TemplateStringsArray, ...tokens: string[][]) => string} The function that takes a `TemplateStringsArray` and an array of tokens and returns the final string.
- * @example pluralize(2)`packag${['e', 'es']} agenc${['y', 'ies']}` // packages agencies
+ * @param {number} total
+ * The total number of items.
+ *
+ * @returns {(strings: TemplateStringsArray, ...tokens: string[][]) => string}
+ * The function that takes a `TemplateStringsArray` and an array of tokens and returns the final string.
+ *
+ * @example
+ * pluralize(2)`packag${['e', 'es']} agenc${['y', 'ies']}` // packages agencies
  */
 export function pluralize(
   total: number

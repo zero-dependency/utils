@@ -10,10 +10,14 @@ export interface Rgb {
 /**
  * Converts a hexadecimal color code to its RGB equivalent.
  *
- * @param {string} hex - The hexadecimal color code to convert.
- * @return {Rgb | null} An object containing the red, green, and blue values of
- * the color, or null if the input is not a valid hexadecimal color code.
- * @example hexToRgb('#fff') // { r: 255, g: 255, b: 255 }
+ * @param {string} hex
+ * The hexadecimal color code to convert.
+ *
+ * @return {Rgb | null}
+ * An object containing the red, green, and blue values of the color, or null if the input is not a valid hexadecimal color code.
+ *
+ * @example
+ * hexToRgb('#fff') // { r: 255, g: 255, b: 255 }
  */
 export function hexToRgb(hex: string): Rgb | null {
   const result = isHexColor(hex)
@@ -29,9 +33,14 @@ export function hexToRgb(hex: string): Rgb | null {
 /**
  * Converts an RGB color object to a hexadecimal color string.
  *
- * @param {Rgb} color - An object that represents an RGB color.
- * @return {string} A string that represents a hexadecimal color code.
- * @example rgbToHex({ r: 255, g: 255, b: 255 }) // '#ffffff'
+ * @param {Rgb} color
+ * An object that represents an RGB color.
+ *
+ * @return {string}
+ * A string that represents a hexadecimal color code.
+ *
+ * @example
+ * rgbToHex({ r: 255, g: 255, b: 255 }) // '#ffffff'
  */
 export function rgbToHex(color: Rgb): string {
   const hex = entries(color).map(([_, value]) => {
@@ -49,9 +58,14 @@ export function rgbToHex(color: Rgb): string {
 /**
  * Checks if the given string represents a valid hexadecimal color code.
  *
- * @param {string} hex - The hexadecimal color code to be validated.
- * @returns {RegExpExecArray | null} - An array of matched values if the input is a valid
- * hexadecimal color code, or null otherwise.
+ * @param {string} hex
+ * The hexadecimal color code to be validated.
+ *
+ * @returns {RegExpExecArray | null}
+ * An array of matched values if the input is a valid hexadecimal color code, or null otherwise.
+ *
+ * @example
+ * isHexColor('#fff') // ['#ffffff', 'ff', 'ff', 'ff']
  */
 export function isHexColor(hex: string): RegExpExecArray | null {
   if (hex.length === 4) hex = repeatEveryChars(hex.slice(1), 2)

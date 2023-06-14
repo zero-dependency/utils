@@ -1,9 +1,19 @@
 /**
  * Returns a new function that, when invoked repeatedly, invokes fn at most once per every ms milliseconds.
  *
- * @param {Function} fn - The function to be throttled.
- * @param {number} ms - The number of milliseconds to throttle invocations to.
- * @return {Function} - A new function that wraps fn with throttling behavior.
+ * @param {Function} fn
+ * The function to be throttled.
+ *
+ * @param {number} ms
+ * The number of milliseconds to throttle invocations to.
+ *
+ * @return {Function}
+ * A new function that wraps fn with throttling behavior.
+ *
+ * @example
+ * const throttledFn = throttle((message) => {
+ *   constole.log(message)
+ * }, 1000)
  */
 export function throttle<T extends (...args: any[]) => ReturnType<T>>(
   fn: T,

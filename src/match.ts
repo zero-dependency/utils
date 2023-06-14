@@ -7,10 +7,11 @@ type Predicate<I extends Input, Out> = (...args: I) => Out
 /**
  * Returns a predicate function that matches against a set of input predicates.
  *
- * @param {function} callback - a function that accepts a `test` function and returns an object whose keys
- * are the names of the predicates, and whose values are the corresponding predicate functions.
- * @return {function} - a predicate function that returns the output of the matching predicate function
- * or `null` if no predicates match.
+ * @param {function} callback
+ * A function that accepts a `test` function and returns an object whose keys are the names of the predicates, and whose values are the corresponding predicate functions.
+ *
+ * @return {function}
+ * A predicate function that returns the output of the matching predicate function or `null` if no predicates match.
  */
 export function match<InputValue extends Input, OutValue>(
   callback: (
