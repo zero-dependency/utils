@@ -144,3 +144,23 @@ export function notUndefined<T>(value: T): value is Exclude<T, undefined> {
 export function isTruthy<T>(value: T): value is NonNullable<T> {
   return Boolean(value)
 }
+
+/**
+ * Checks if the code is running in a browser environment.
+ *
+ * @return {boolean}
+ * Returns true if the code is running in a browser, false otherwise.
+ */
+export function isBrowser(): boolean {
+  return typeof window !== 'undefined'
+}
+
+/**
+ * Check if the code is running in a Node.js environment.
+ *
+ * @returns {boolean}
+ * True if the code is running in a Node.js environment, false otherwise.
+ */
+export function isNode(): boolean {
+  return typeof process !== 'undefined'
+}
