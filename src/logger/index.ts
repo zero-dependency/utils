@@ -29,7 +29,7 @@ export class Logger {
   private print(type: LogType, ...args: unknown[]): void {
     const log = console[type]
     if (isBrowser()) {
-      log(browserPrefix(this.#prefix, type), ...args)
+      log(...browserPrefix(this.#prefix, type), ...args)
     } else {
       log(nodePrefix(this.#prefix, type), ...args)
     }
