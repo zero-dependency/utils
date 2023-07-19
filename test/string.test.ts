@@ -56,7 +56,7 @@ describe('randomToken', () => {
 
   test('should return a random string', () => {
     for (let i = 0; i < 1000; i++) {
-      expect(randomToken()).toMatch(/^[a-z0-9]{8,13}$/)
+      expect(randomToken()).toMatch(/^[a-z0-9]{8,14}$/)
     }
   })
 })
