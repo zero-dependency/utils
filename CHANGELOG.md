@@ -1,5 +1,11 @@
 # @zero-dependency/utils
 
+## 1.7.3
+
+### Patch Changes
+
+- 0ef9a43: chore: test npm provenance
+
 ## 1.7.2
 
 ### Patch Changes
