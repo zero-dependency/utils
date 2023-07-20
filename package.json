@@ -1,6 +1,6 @@
 {
   "name": "@zero-dependency/utils",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Additional utils",
   "type": "module",
   "types": "./dist/index.d.ts",
