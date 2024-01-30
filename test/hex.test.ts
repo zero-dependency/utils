@@ -1,5 +1,5 @@
 import { describe, expect } from 'vitest'
-import { hexToRgb, isHexColor, rgbToHex } from '../src/hex.js'
+import { hexToRgb, isHexColor, rgbToHex, colorBrightness } from '../src/hex.js'
 
 describe('hex', (test) => {
   test('should be defined', () => {
@@ -35,5 +35,16 @@ describe('hex', (test) => {
     // invalid
     expect(isHexColor('#cpp')).toBeNull()
     expect(isHexColor('#wrong')).toBeNull()
+  })
+
+  test('color brightness', () => {
+    const whiteColor = hexToRgb('#fff')!
+    const blackColor = hexToRgb('#000')!
+
+    const whiteBrightness = colorBrightness(whiteColor)
+    const blackBrightness = colorBrightness(blackColor)
+
+    expect(whiteBrightness).toBe(255)
+    expect(blackBrightness).toBe(0)
   })
 })
