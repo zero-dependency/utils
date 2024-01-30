@@ -71,3 +71,21 @@ export function isHexColor(hex: string): RegExpExecArray | null {
   if (hex.length === 4) hex = repeatEveryChars(hex.slice(1), 2)
   return /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
 }
+
+/**
+ * Returns the brightness of a color (from 0 to 255).
+ *
+ * @param {Rgb} color
+ * An object that represents an RGB color.
+ *
+ * @returns {number}
+ * The brightness of the color.
+ *
+ * @example
+ * const color = hexToRgb('#fff')
+ * const brightness = colorBrightness(color) // 255
+ * const backgroundColor = brightness > 128 ? '#000' : '#fff'
+ */
+export function colorBrightness(color: Rgb): number {
+  return (color.r * 299 + color.g * 587 + color.b * 114) / 1000;
+}
