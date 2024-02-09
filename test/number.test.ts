@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+
 import { addZero, clamp, randomNum, toNumber } from '../src/number.js'
 
 describe('toNumber', () => {

@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { match } from '../src/match.js'
 
 describe('match', (test) => {

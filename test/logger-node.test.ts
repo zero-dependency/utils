@@ -1,6 +1,7 @@
 // @vitest-environment node
 
 import { describe, expect, vi } from 'vitest'
+
 import { Logger } from '../src/logger/index.js'
 import { nodePrefix } from '../src/logger/node.js'
 import type { LogType } from '../src/logger/types.js'

@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+
 import { sleep } from '../src/sleep.js'
 
 describe('wait', () => {

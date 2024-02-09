@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+
 import { capitalize, generateChars, randomToken } from '../src/string.js'
 
 describe('generateChars', () => {

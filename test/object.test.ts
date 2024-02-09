@@ -1,4 +1,5 @@
 import { describe, expect, expectTypeOf, test } from 'vitest'
+
 import { entries, omit, pick } from '../src/object.js'
 
 describe('object', () => {
@@ -17,6 +18,7 @@ describe('object', () => {
     expect(entries(mockData)).toEqual([
       ['a', 1],
       ['b', 'foo']
+
     ])
   })
 

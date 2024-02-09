@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+
 import { pluralize } from '../src/pluralize.js'
 
 describe('pluralize', () => {

@@ -87,5 +87,5 @@ export function isHexColor(hex: string): RegExpExecArray | null {
  * const backgroundColor = brightness > 128 ? '#000' : '#fff'
  */
 export function colorBrightness(color: Rgb): number {
-  return (color.r * 299 + color.g * 587 + color.b * 114) / 1000;
+  return (color.r * 299 + color.g * 587 + color.b * 114) / 1000
 }
