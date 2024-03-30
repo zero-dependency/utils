@@ -1,10 +1,23 @@
 import { entries } from './object.js'
-import { repeatEveryChars } from './string.js'
 
 export interface Rgb {
   r: number
   g: number
   b: number
+  a?: number
+}
+
+function arrayOfColorsToRgb(groups: string[] | null, radix = 16): Rgb | null {
+  if (!groups || groups.length < 3) return null
+
+  // prettier-ignore
+  const [r, g, b, a] = groups
+  return {
+    r: parseInt(r!, radix),
+    g: parseInt(g!, radix),
+    b: parseInt(b!, radix),
+    a: a ? parseInt(a, radix) : undefined
+  }
 }
 
 /**
@@ -14,26 +27,20 @@ export interface Rgb {
  * The hexadecimal color code to convert.
  *
  * @return {Rgb | null}
- * An object containing the red, green, and blue values of the color, or null if the input is not a valid hexadecimal color code.
+ * An object containing the red, green, and blue values of the color,
+ * or null if the input is not a valid hexadecimal color code.
  *
  * @example
- * hexToRgb('#fff') // { r: 255, g: 255, b: 255 }
+ * hexToRgb('#ffffff') // { r: 255, g: 255, b: 255, a: undefined }
  */
 export function hexToRgb(hex: string): Rgb | null {
-  const result = isHexColor(hex)
-
-  // prettier-ignore
-  return result ? {
-    r: parseInt(result[1]!, 16),
-    g: parseInt(result[2]!, 16),
-    b: parseInt(result[3]!, 16)
-  } : null
+  return arrayOfColorsToRgb(parseHex(hex))
 }
 
 /**
- * Converts an RGB color object to a hexadecimal color string.
+ * Converts an RGB(A) color strong or object to a hexadecimal color string.
  *
- * @param {Rgb} color
+ * @param {Rgb | string} color
  * An object that represents an RGB color.
  *
  * @return {string}
@@ -41,9 +48,18 @@ export function hexToRgb(hex: string): Rgb | null {
  *
  * @example
  * rgbToHex({ r: 255, g: 255, b: 255 }) // '#ffffff'
+ * rgbToHex('rgb(255, 255, 255)') // '#ffffff'
+ * rgbToHex('rgba(255, 255, 255, 0.5)') // '#ffffff80'
  */
-export function rgbToHex(color: Rgb): string {
+export function rgbToHex(color: Rgb | string): string {
+  if (typeof color === 'string') {
+    const rgb = arrayOfColorsToRgb(color.match(/[\.\d]+/g), 0)
+    if (!rgb) return ''
+    color = rgb
+  }
+
   const hex = entries(color).map(([_, value]) => {
+    if (value === undefined) return ''
     const parsedValue = Math.abs(value).toString(16)
     return parsedValue.length > 2
       ? '00'
@@ -61,15 +77,14 @@ export function rgbToHex(color: Rgb): string {
  * @param {string} hex
  * The hexadecimal color code to be validated.
  *
- * @returns {RegExpExecArray | null}
+ * @returns {string[] | null}
  * An array of matched values if the input is a valid hexadecimal color code, or null otherwise.
  *
  * @example
- * isHexColor('#fff') // ['#ffffff', 'ff', 'ff', 'ff']
+ * parseHex('#ffffff') // ['ff', 'ff', 'ff']
  */
-export function isHexColor(hex: string): RegExpExecArray | null {
-  if (hex.length === 4) hex = repeatEveryChars(hex.slice(1), 2)
-  return /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+export function parseHex(hex: string): string[] | null {
+  return hex.match(/([a-f\d]{2})/gi)
 }
 
 /**
@@ -82,9 +97,9 @@ export function isHexColor(hex: string): RegExpExecArray | null {
  * The brightness of the color.
  *
  * @example
- * const color = hexToRgb('#fff')
+ * const color = hexToRgb('#ffffff')
  * const brightness = colorBrightness(color) // 255
- * const backgroundColor = brightness > 128 ? '#000' : '#fff'
+ * const backgroundColor = brightness >= 128 ? '#000' : '#fff'
  */
 export function colorBrightness(color: Rgb): number {
   return (color.r * 299 + color.g * 587 + color.b * 114) / 1000

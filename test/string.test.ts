@@ -1,6 +1,11 @@
 import { describe, expect, test } from 'vitest'
 
-import { capitalize, generateChars, randomToken, getDifference } from '../src/string.js'
+import {
+  capitalize,
+  generateChars,
+  getDifference,
+  randomToken
+} from '../src/string.js'
 
 describe('generateChars', () => {
   test('should be defined', () => {
