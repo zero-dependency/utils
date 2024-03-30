@@ -1,5 +1,11 @@
 # @zero-dependency/utils
 
+## 1.7.6
+
+### Patch Changes
+
+- feat: add `getDifference` for strings
+
 ## 1.7.5
 
 ### Patch Changes
