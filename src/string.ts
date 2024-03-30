@@ -77,3 +77,33 @@ export function repeatEveryChars(str: string, repeats: number): string {
 
   return result
 }
+
+export interface DifferenceResult {
+  index: number
+  old?: string
+  new?: string
+}
+
+export function getDifference(
+  leftStr: string,
+  rightStr: string
+): DifferenceResult[] {
+  const differenceResult: DifferenceResult[] = []
+  if (leftStr === rightStr) return differenceResult
+
+  for (
+    let index = 0;
+    index < Math.max(leftStr.length, rightStr.length);
+    index++
+  ) {
+    if (leftStr[index] !== rightStr[index]) {
+      differenceResult.push({
+        index: index,
+        old: leftStr[index],
+        new: rightStr[index]
+      })
+    }
+  }
+
+  return differenceResult
+}

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { capitalize, generateChars, randomToken } from '../src/string.js'
+import { capitalize, generateChars, randomToken, getDifference } from '../src/string.js'
 
 describe('generateChars', () => {
   test('should be defined', () => {
@@ -59,5 +59,18 @@ describe('randomToken', () => {
     for (let i = 0; i < 1000; i++) {
       expect(randomToken()).toMatch(/^[a-z0-9]{8,14}$/)
     }
+  })
+})
+
+describe('getDifference', () => {
+  test('should be defined', () => {
+    expect(getDifference).toBeDefined()
+  })
+
+  test('should return the difference between two strings', () => {
+    expect(getDifference('fo', 'bar')).toMatchSnapshot()
+    expect(getDifference('foo', 'fooo')).toMatchSnapshot()
+    expect(getDifference('', 'foo')).toMatchSnapshot()
+    expect(getDifference('foo', '')).toMatchSnapshot()
   })
 })

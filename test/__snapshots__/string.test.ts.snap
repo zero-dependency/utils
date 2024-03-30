@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getDifference > should return the difference between two strings 1`] = `
+[
+  {
+    "index": 0,
+    "new": "b",
+    "old": "f",
+  },
+  {
+    "index": 1,
+    "new": "a",
+    "old": "o",
+  },
+  {
+    "index": 2,
+    "new": "r",
+    "old": undefined,
+  },
+]
+`;
+
+exports[`getDifference > should return the difference between two strings 2`] = `
+[
+  {
+    "index": 3,
+    "new": "o",
+    "old": undefined,
+  },
+]
+`;
+
+exports[`getDifference > should return the difference between two strings 3`] = `
+[
+  {
+    "index": 0,
+    "new": "f",
+    "old": undefined,
+  },
+  {
+    "index": 1,
+    "new": "o",
+    "old": undefined,
+  },
+  {
+    "index": 2,
+    "new": "o",
+    "old": undefined,
+  },
+]
+`;
+
+exports[`getDifference > should return the difference between two strings 4`] = `
+[
+  {
+    "index": 0,
+    "new": undefined,
+    "old": "f",
+  },
+  {
+    "index": 1,
+    "new": undefined,
+    "old": "o",
+  },
+  {
+    "index": 2,
+    "new": undefined,
+    "old": "o",
+  },
+]
+`;
