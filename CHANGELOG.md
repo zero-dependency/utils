@@ -1,5 +1,11 @@
 # @zero-dependency/utils
 
+## 1.7.7
+
+### Patch Changes
+
+- feat(hex): support rgb(a)
+
 ## 1.7.6
 
 ### Patch Changes
