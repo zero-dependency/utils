@@ -84,6 +84,21 @@ export interface DifferenceResult {
   new?: string
 }
 
+/**
+ * Compare two strings and return an array of differences.
+ *
+ * @param leftStr
+ *
+ * @param rightStr
+ *
+ * @returns {DifferenceResult[]}
+ *
+ * @example
+ * ```js
+ * const diff = getDifference('hello', 'hillo')
+ * console.log(diff) // [{ index: 1, old: 'e', new: 'i' }]
+ * ```
+ */
 export function getDifference(
   leftStr: string,
   rightStr: string
