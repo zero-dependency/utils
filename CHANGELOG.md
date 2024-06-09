@@ -1,5 +1,11 @@
 # @zero-dependency/utils
 
+## 1.7.8
+
+### Patch Changes
+
+- feat(pluralize): add count to tagged literale template
+
 ## 1.7.7
 
 ### Patch Changes
