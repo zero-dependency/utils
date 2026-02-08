@@ -3,6 +3,6 @@ import { defineProject } from 'vitest/config'
 export default defineProject({
   test: {
     name: 'utils',
-    environment: 'jsdom'
+    environment: 'happy-dom'
   }
 })

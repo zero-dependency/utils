@@ -1,6 +1,7 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
+    "resolveJsonModule": true,
     "outDir": "dist",
     "types": [
       "@types/node",
@@ -8,6 +9,8 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src",
+    "test",
+    "vite.config.ts"
   ]
 }
